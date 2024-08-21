@@ -1,0 +1,103 @@
+cds###Get the service documnet
+http://localhost:4004/odata/v4/Employees
+
+###Get the Service metadata document
+http://localhost:4004/odata/v4/Employees/$metadata
+
+###Get all the Employees data
+http://localhost:4004/odata/v4/Employees/EmployeeSet
+
+###Get all the Employees whose name starts with ‘S’
+
+http://localhost:4004/odata/v4/Employees/EmployeeSet?$filter=contains(nameFirst,'S')
+
+###Get the top 2 employees, use orderby salaryAmount
+http://localhost:4004/odata/v4/Employees/EmployeeSet?$top=2
+
+###CREATE an employee with salary <50000 & currency code USD.
+POST http://localhost:4004/odata/v4/Employees/EmployeeSet
+Content-Type: application/json
+
+{
+    "nameFirst": "Mahendra",
+    "nameMiddle": "Singh",
+    "nameLast": "Dhoni",
+    "nameInitials": "MSD",
+    "Gender": "M",
+    "language": "B",
+    "phoneNumber": "+919381015284",
+    "email": "ms.dhoni@gmail.com",
+    "loginName": "MAHI",
+    "Currency_code": "USD",
+    "salaryAmount": 500,
+    "accountNumber": "07071981",
+    "bankId": "7777777",
+    "bankName": "State Bank Of India"
+}
+
+###CREATE an employee with salary >50000 & currency code USD.
+POST http://localhost:4004/odata/v4/Employees/EmployeeSet
+Content-Type: application/json
+
+{
+    "nameFirst": "Mahendra",
+    "nameMiddle": "Singh",
+    "nameLast": "Dhoni",
+    "nameInitials": "MSD",
+    "Gender": "M",
+    "language": "B",
+    "phoneNumber": "+919381015284",
+    "email": "ms.dhoni@gmail.com",
+    "loginName": "MAHI",
+    "Currency_code": "USD",
+    "salaryAmount": 500000,
+    "accountNumber": "07071981",
+    "bankId": "7777777",
+    "bankName": "State Bank Of India"
+}
+
+###CREATE an employee with salary <50000 & currency code EUR
+POST http://localhost:4004/odata/v4/Employees/EmployeeSet
+Content-Type: application/json
+
+{
+    "nameFirst": "Mahendra",
+    "nameMiddle": "Singh",
+    "nameLast": "Dhoni",
+    "nameInitials": "MSD",
+    "Gender": "M",
+    "language": "B",
+    "phoneNumber": "+919381015284",
+    "email": "ms.dhoni@gmail.com",
+    "loginName": "MAHI",
+    "Currency_code": "EUR",
+    "salaryAmount": 500,
+    "accountNumber": "07071981",
+    "bankId": "7777777",
+    "bankName": "State Bank Of India"
+}
+
+###UPDATE an employee by keeping the nameFirst and loginName intact.
+
+PATCH http://localhost:4004/odata/v4/Employees/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C197C7FB
+Content-Type: application/json
+
+{
+  "nameMiddle": "UpdatedMiddleName",
+  "salaryAmount": 45000
+}
+
+###UPDATE an employee by keeping the nameFirst and loginName intact.
+
+PATCH http://localhost:4004/odata/v4/Employees/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19787FB
+Content-Type: application/json
+
+{
+ "loginName": "Autumn"
+}
+
+###DELETE any employee
+DELETE http://localhost:4004/odata/v4/Employees/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C197C7FB
+
+###DELETE an employee whose nameFirst starts with ‘S’.
+Delete http://localhost:4004/odata/v4/Employees/EmployeeSet?$filter=contains(nameFirst,'S')
